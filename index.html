@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="src/index.js"></script>
+    <title>Weather Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <img src="images/sunshine.png" class="todays-forcast-img" alt="">
+                <h1 id="temperature">17°c</h1>
+                <h2 id="date-time">Sunday</h2>
+                <h3 id="city">Abuja, Nigeria</h3>
+                <h4>Sunny🌞</h4>
+                <span></span>
+                <div class="Highlights">
+                    <h2 class="todays-hgl">Today's Highlights</h1>
+                        <div class="details">
+                            <h4>Humidity☁️: 20%</h4>
+                            <h4>Air Quailty🌫️: 100 <span>bad 👎</span> </h4>
+                            <h4>Precipitation💧: 0mm in last 24hr</h4>
+                            <h4>Visibility✨: 14km</h4>
+                        </div>
+
+                </div>
+            </div>
+
+            <div class="col-9">
+                <form class="d-flex searchbar" role="search" id="search-form">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="search-input" id="city-input">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Sunday</h5>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h5>38°</h5>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Monday</h5>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h5>38°</h5>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Tuesday</h5>
+                            <img src="images/cloudy.png" class="img-fluid" alt="...">
+                            <h5>20°</h5>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Wednesday</h5>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h5>36°</h5>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Thursday</h5>
+                            <img src="images/cloudy.png" class="img-fluid" alt="...">
+                            <h5>21°</h5>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Friday</h5>
+                            <img src="images/cloudy.png" class="img-fluid" alt="...">
+                            <h5>22°</h5>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h5>Saturday</h5>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h5>34°</h5>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="abuja">
+                    <h1 class="abj-today" id="city-today">Abuja, Today</h1>
+                    <img src="images/abuja.jpg" class="img-fluid rounded mx-auto d-block abuja-img " alt="...">
+                </div>
+
+                <div class="row forecast">
+                    <div class=" col-3 morning">
+                        <h2>Morning</h2>
+                        <h1>36°</h1>
+                        <img src="images/sunshine.png" class="img-fluid forcast-img" alt="...">
+                    </div>
+                    <div class=" col-3 afternoon">
+                        <h2>Afternoon</h2>
+                        <h1>36°</h1>
+                        <img src="images/sunshine.png" class="img-fluid forcast-img" alt="...">
+                    </div>
+                    <div class=" col-3 evening">
+                        <h2>Evening</h2>
+                        <h1>36°</h1>
+                        <img src="images/night-mode.png" class="img-fluid forcast-img" alt="...">
+                    </div>
+                    <div class="col-3 night">
+                        <h2>Overnight</h2>
+                        <h1>36°</h1>
+                        <img src="images/night-mode.png" class="img-fluid forcast-img" alt="...">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
