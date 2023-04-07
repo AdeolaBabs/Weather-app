@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
     <title>Weather Website</title>
@@ -21,110 +22,87 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-3">
-                <img src="images/sunshine.png" class="todays-forcast-img" alt="">
-                <h1 id="temperature">17°c</h1>
-                <h2 id="date-time">Sunday</h2>
-                <h3 id="city">Abuja, Nigeria</h3>
-                <h4>Sunny🌞</h4>
-                <span></span>
-                <div class="Highlights">
-                    <h2 class="todays-hgl">Today's Highlights</h1>
-                        <div class="details">
-                            <h4>Humidity☁️: 20%</h4>
-                            <h4>Air Quailty🌫️: 100 <span>bad 👎</span> </h4>
-                            <h4>Precipitation💧: 0mm in last 24hr</h4>
-                            <h4>Visibility✨: 14km</h4>
-                        </div>
-
-                </div>
-            </div>
-
-            <div class="col-9">
-                <form class="d-flex searchbar" role="search" id="search-form">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        name="search-input" id="city-input">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
+        <div class="weather-app-wrapper"> 
+            <div class="weather-app">
+                <form id="search-form">
+                  <div class="row">
+                    <div class="col-9">
+                       <input
+                       type="search"
+                       placeholder="Type a city"
+                       class="form-control"
+                       id="city-input"
+                       autocomplete="off"
+                       />
+                    </div>
+                    <div class="col-3">
+                        <input
+                        type="submit"
+                        value="search"
+                        class="btn btn-primary w-100"
+                        />
+                    </div>
+                  </div>
                 </form>
-
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Sunday</h5>
-                            <img src="images/sunshine.png" class="img-fluid" alt="...">
-                            <h5>38°</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="city-details">
+                            <h1 id="city"></h1>
+                            <ul>
+                                <li id="date"></li>
+                                <li id="weather-description">Sunny<img src="images/Sun1.svg"></li>
+                            </ul>
                         </div>
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Monday</h5>
-                            <img src="images/sunshine.png" class="img-fluid" alt="...">
-                            <h5>38°</h5>
-                        </div>
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Tuesday</h5>
-                            <img src="images/cloudy.png" class="img-fluid" alt="...">
-                            <h5>20°</h5>
-                        </div>
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Wednesday</h5>
-                            <img src="images/sunshine.png" class="img-fluid" alt="...">
-                            <h5>36°</h5>
-                        </div>
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Thursday</h5>
-                            <img src="images/cloudy.png" class="img-fluid" alt="...">
-                            <h5>21°</h5>
-                        </div>
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Friday</h5>
-                            <img src="images/cloudy.png" class="img-fluid" alt="...">
-                            <h5>22°</h5>
-                        </div>
-                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h5>Saturday</h5>
-                            <img src="images/sunshine.png" class="img-fluid" alt="...">
-                            <h5>34°</h5>
-                        </div>
-
-
                     </div>
-
+                    <div class="col-6">
+                        <div class="weather-temperature">
+                            <div class="float-left">
+                               <strong id="temperature"></strong>
+                               <span class="units">
+                                <a href="#" id="celsius-link" class="active">°C</a> |
+                                <a href="#" id="fahrenhiet-link">°F</a>
+                               </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="abuja">
-                    <h1 class="abj-today" id="city-today">Abuja, Today</h1>
-                    <img src="images/abuja.jpg" class="img-fluid rounded mx-auto d-block abuja-img " alt="...">
+                <div class="row">
+                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <h5>Sunday</h5>
+                        <img src="images/sunshine.png" class="img-fluid" alt="...">
+                        <h5>38°</h5>
+                    </div>
+                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <h5>Monday</h5>
+                        <img src="images/sunshine.png" class="img-fluid" alt="...">
+                        <h5>38°</h5>
+                    </div>
+                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <h5>Tuesday</h5>
+                        <img src="images/cloudy.png" class="img-fluid" alt="...">
+                        <h5>20°</h5>
+                    </div>
+                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <h5>Wednesday</h5>
+                        <img src="images/sunshine.png" class="img-fluid" alt="...">
+                        <h5>36°</h5>
+                    </div>
+                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <h5>Thursday</h5>
+                        <img src="images/cloudy.png" class="img-fluid" alt="...">
+                        <h5>21°</h5>
+                    </div>      
                 </div>
 
-                <div class="row forecast">
-                    <div class=" col-3 morning">
-                        <h2>Morning</h2>
-                        <h1>36°</h1>
-                        <img src="images/sunshine.png" class="img-fluid forcast-img" alt="...">
-                    </div>
-                    <div class=" col-3 afternoon">
-                        <h2>Afternoon</h2>
-                        <h1>36°</h1>
-                        <img src="images/sunshine.png" class="img-fluid forcast-img" alt="...">
-                    </div>
-                    <div class=" col-3 evening">
-                        <h2>Evening</h2>
-                        <h1>36°</h1>
-                        <img src="images/night-mode.png" class="img-fluid forcast-img" alt="...">
-                    </div>
-                    <div class="col-3 night">
-                        <h2>Overnight</h2>
-                        <h1>36°</h1>
-                        <img src="images/night-mode.png" class="img-fluid forcast-img" alt="...">
-                    </div>
+                <small>
+                   Coded by <a href="https://github.com/AdeolaBabs/Weather-app" target="_blank">Adeola</a>
+                </small>
 
-                </div>
-            </div>
+                
         </div>
+
     </div>
-
-
-
 </body>
 
 </html>
