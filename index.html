@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -38,7 +41,7 @@
                     <div class="col-3">
                         <input
                         type="submit"
-                        value="search"
+                        value="Search"
                         class="btn btn-primary w-100"
                         />
                     </div>
@@ -47,9 +50,9 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="city-details">
-                            <h1 id="city"></h1>
+                            <h1 id="city">Abuja</h1>
                             <ul>
-                                <li id="date"></li>
+                                <li id="date">Friday 7th April 10:50pm</li>
                                 <li id="weather-description">Sunny<img src="images/Sun1.svg"></li>
                             </ul>
                         </div>
@@ -57,7 +60,7 @@
                     <div class="col-6">
                         <div class="weather-temperature">
                             <div class="float-left">
-                               <strong id="temperature"></strong>
+                               <strong id="temperature">32</strong>
                                <span class="units">
                                 <a href="#" id="celsius-link" class="active">°C</a> |
                                 <a href="#" id="fahrenhiet-link">°F</a>
@@ -67,32 +70,34 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                        <h5>Sunday</h5>
-                        <img src="images/sunshine.png" class="img-fluid" alt="...">
-                        <h5>38°</h5>
+                <div class="daily-forecast">
+                    <div class="row">
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>Sunday</h2>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h2>38°</h2>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>Monday</h2>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h2>38°</h2>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>Tuesday</h2>
+                            <img src="images/cloudy.png" class="img-fluid" alt="...">
+                            <h2>20°</h2>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>Wednesday</h2>
+                            <img src="images/sunshine.png" class="img-fluid" alt="...">
+                            <h2>36°</h2>
+                        </div>
+                        <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>Thursday</h2>
+                            <img src="images/cloudy.png" class="img-fluid" alt="...">
+                            <h2>21°</h2>
+                        </div>
                     </div>
-                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                        <h5>Monday</h5>
-                        <img src="images/sunshine.png" class="img-fluid" alt="...">
-                        <h5>38°</h5>
-                    </div>
-                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                        <h5>Tuesday</h5>
-                        <img src="images/cloudy.png" class="img-fluid" alt="...">
-                        <h5>20°</h5>
-                    </div>
-                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                        <h5>Wednesday</h5>
-                        <img src="images/sunshine.png" class="img-fluid" alt="...">
-                        <h5>36°</h5>
-                    </div>
-                    <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                        <h5>Thursday</h5>
-                        <img src="images/cloudy.png" class="img-fluid" alt="...">
-                        <h5>21°</h5>
-                    </div>      
                 </div>
 
                 <small>
