@@ -18,19 +18,45 @@
         "Friday",
         "Saturday"
         ];
+
+    let months =[ 
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+        ];
     let day = days[date.getDay()];
     let todaysDate = date.getDate();
-    return `${day} ${todaysDate} ${hours}:${minutes}`;
+    let month = months[date.getMonth()];
+    return `${day} ${todaysDate} ${month} ${hours}:${minutes}`;
     
  }
 
+function showWeather(response) {
+     let temp=document.querySelector("#temperature");
+     let temperature=Math.round(response.data.main.temp);
+     let dateElement = document.querySelector("#date");
+     let cityElement = document.querySelector("#city");
+     celsiusTemperature = response.data.main.temp;
 
+     cityElement.innerHTML = response.data.name;
+     temp.innerHTML=`${temperature}`;
+     dateElement.innerHTML = formatDate(response.data.dt * 1000);
+ }
 
 
  
  function searchCity(city) {
-     let apiKey="2ff29bed3181c3526c35cc5408037f85";
-     let apiUrl=`https: //api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+     let apiKey="ec75c387e91187f520f83a7c2bdb2671";
+     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
      axios.get(apiUrl).then(showWeather);
  }
 
@@ -40,28 +66,8 @@
      searchCity(city);
      let newCity=document.querySelector("#city");
      newCity.innerHTML=city;
-    //  let cityToday=document.querySelector("#city-today");
-    //  cityToday.innerHTML=`${city},
-    //  Today`;
  }
 
- function showWeather(response) {
-     let temp=document.querySelector("#temperature");
-     let temperature=Math.round(response.data.main.temp);
-     temp.innerHTML=`${temperature}°c`;
- }
-
- function searchLocation(position) {
-     let apiKey="2ff29bed3181c3526c35cc5408037f85";
-     let apiUrl=`https: //api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
-     axios.get(apiUrl).then(showWeather);
- }
-
- function getCurrentLocation(event) {
-     event.preventDefault();
-     navigator.geolocation.getCurrentPosition(searchLocation);
- }
 
  
 function displayFahrenheitTemperature(event) {
@@ -93,7 +99,7 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("New York");
+search("Abuja");
 
 
 
