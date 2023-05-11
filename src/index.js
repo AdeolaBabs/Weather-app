@@ -45,11 +45,20 @@ function showWeather(response) {
      let temperature=Math.round(response.data.main.temp);
      let dateElement = document.querySelector("#date");
      let cityElement = document.querySelector("#city");
+    //  let iconElement = document.querySelector("icon")
+     let descriptionElement = document.querySelector("#weather-description")
+
      celsiusTemperature = response.data.main.temp;
 
      cityElement.innerHTML = response.data.name;
      temp.innerHTML=`${temperature}`;
+     descriptionElement.innerHTML = response.data.weather[0].description;
      dateElement.innerHTML = formatDate(response.data.dt * 1000);
+//      iconElement.setAttribute(
+//     "src",
+//     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+//   );
+//   iconElement.setAttribute("alt", response.data.weather[0].description);
  }
 
 
