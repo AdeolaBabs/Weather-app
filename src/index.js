@@ -40,12 +40,39 @@
     
  }
 
+ function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day){
+    forecastHTML =
+      forecastHTML +
+
+      ` <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>${day}</h2>
+                              <img
+                                src="http://openweathermap.org/img/wn/50d@2x.png"
+                                alt=""
+                                width="42"
+                                />
+                            <h2>38°</h2>
+                        </div>`;
+  
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function showWeather(response) {
      let temp=document.querySelector("#temperature");
      let temperature=Math.round(response.data.main.temp);
      let dateElement = document.querySelector("#date");
      let cityElement = document.querySelector("#city");
-    //  let iconElement = document.querySelector("icon")
+     let iconElement = document.querySelector("icon")
      let descriptionElement = document.querySelector("#weather-description")
 
      celsiusTemperature = response.data.main.temp;
@@ -54,11 +81,11 @@ function showWeather(response) {
      temp.innerHTML=`${temperature}`;
      descriptionElement.innerHTML = response.data.weather[0].description;
      dateElement.innerHTML = formatDate(response.data.dt * 1000);
-//      iconElement.setAttribute(
-//     "src",
-//     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-//   );
-//   iconElement.setAttribute("alt", response.data.weather[0].description);
+     iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
  }
 
 
@@ -108,8 +135,8 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("Abuja");
-
+searchCity("Abuja");
+displayForecast();
 
 
 
