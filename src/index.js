@@ -40,26 +40,40 @@
     
  }
 
- function displayForecast() {
+ 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  return days[day];
+}
+
+ function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
-
-  let days = ["Thu", "Fri", "Sat", "Sun"];
-
-  let forecastHTML = `<div class="row">`;
-  days.forEach(function (day){
-    forecastHTML =
-      forecastHTML +
-
-      ` <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
-                            <h2>${day}</h2>
-                              <img
-                                src="http://openweathermap.org/img/wn/50d@2x.png"
-                                alt=""
-                                width="42"
-                                />
-                            <h2>38°</h2>
-                        </div>`;
   
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {   
+    if (index < 5){
+      forecastHTML =
+        forecastHTML +
+
+        `
+         <div class="col-2 img-div shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <h2>${formatDay(forecastDay.dt)}</h2>
+                            <img
+                            src="http://openweathermap.org/img/wn/${
+                                forecastDay.weather[0].icon
+                            }@2x.png"
+                            alt=""
+                            width="40"
+                            />
+                            <h2>${Math.round(forecastDay.temp.max)}°</h2>
+                         </div>                       
+          `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -67,41 +81,48 @@
   console.log(forecastHTML);
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey="96ad27349a64ea1dcdfbe6f4d458c085";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  //1let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${coordinates.lat}&lon=${coordinates.lon}&limit=5&appid=${apiKey}`;
+  //2let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  //3 let apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`
+  axios.get(apiUrl).then(displayForecast);
+}
+
+
+
 function showWeather(response) {
-     let temp=document.querySelector("#temperature");
-     let temperature=Math.round(response.data.main.temp);
+     let temperature =document.querySelector("#temperature");
      let dateElement = document.querySelector("#date");
      let cityElement = document.querySelector("#city");
-     let iconElement = document.querySelector("icon")
-     let descriptionElement = document.querySelector("#weather-description")
+     let iconElement = document.querySelector("#icon");
+     let descriptionElement = document.querySelector("#weather-description");
 
      celsiusTemperature = response.data.main.temp;
-
+     temperature.innerHTML = Math.round(celsiusTemperature);
      cityElement.innerHTML = response.data.name;
-     temp.innerHTML=`${temperature}`;
      descriptionElement.innerHTML = response.data.weather[0].description;
      dateElement.innerHTML = formatDate(response.data.dt * 1000);
-     iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    iconElement.setAttribute("alt", response.data.weather[0].description);
+
+    getForecast(response.data.coord);
  }
 
 
  
  function searchCity(city) {
-     let apiKey="ec75c387e91187f520f83a7c2bdb2671";
-     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-     axios.get(apiUrl).then(showWeather);
+  let apiKey="96ad27349a64ea1dcdfbe6f4d458c085";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showWeather);
  }
 
  function handleSubmit(event) {
-     event.preventDefault();
-     let city=document.querySelector("#city-input").value;
-     searchCity(city);
-     let newCity=document.querySelector("#city");
-     newCity.innerHTML=city;
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchCity(cityInputElement.value);
  }
 
 
@@ -136,7 +157,6 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("Abuja");
-displayForecast();
 
 
 
